@@ -1,0 +1,80 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+background: #020024;
+background: linear-gradient(92deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);;
+font-family: Helvetica, Arial, sans-serif;
+}
+
+.title_heading{
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+ .box{
+      width: 350px;
+      height: 300px;
+      color: whitesmoke;
+      border-color: white;
+      border-radius: 5px;
+      outline-style: solid;
+      margin-top: 200px;
+      margin-left: 540px;
+      background-color: whitesmoke;
+}
+
+.username{
+    padding: 1px;
+    margin-left: 20px;
+    width: 300px;
+    height: 40px;
+}
+.password{
+    padding: 1px;
+    margin-left: 20px;
+    width: 300px;
+    height: 40px;
+    margin-top: 14px;
+}
+
+button{
+    margin-left: 20px;
+     padding: 1px;
+    width: 304px;
+    height: 40px;
+    margin-top: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color:#5890FF ;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    box-shadow: 2px color( white  blue);
+    text-shadow: 2px;
+   
+
+}
+.account_text{
+    color: black;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 18px;
+    margin-left: 12px;
+}
+a {
+  text-decoration: none;
+}
+.text_signIn{
+    padding-left: 16px;
+    text-decoration: none;
+}
+
+
+
+
+
