@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
   <title>TaskNest</title>
 </head>
+
 <body>
 
     <!-- Signup -->
   <div id="signup-container">
     <h1>Signup</h1>
-    <input type="text" class="username" placeholder="Username" required>
-    <input type="password" class="password" placeholder="Password" required>
-    <button class="button_signup" id="signup_btn" type="button">Signup</button>
+    <input type="text" class="username" id="signup-username" placeholder=" Enter your Username" required>
+    <input type="password" class="password" id="signup-password"  placeholder=" Enter your Password" required>
+    <button class="button_signup" id="signup_btn" type="button" onclick="signup()">Signup</button>
     <div class="end_div">  
       <p class="account_text">Already have an account?</p>
       <a href="#" id="show-signin"><p class="text_signIn">Sign In</p></a> 
@@ -22,10 +24,10 @@
 
   <!-- Signin -->
   <div id="signin-container" style="display: none;">
-    <h1>Signin</h1>
-    <input type="text" class="username" placeholder="Username" required>
-    <input type="password" class="password" placeholder="Password" required>
-    <button class="button_signup" id="signin_btn" type="button">Signin</button>
+    <h1>Welcome Back</h1>
+    <input type="text" class="username" id="signin-username" placeholder="Username" required>
+    <input type="password" class="password" id="signin-password" placeholder="Password" required>
+    <button class="button_signup" id="signin_btn" type="button" onclick="signin()">Signin</button>
     <div class="end_div">  
       <p class="account_text">Don’t have an account?</p>
       <a href="#" id="show-signup"><p class="text_signIn">Sign Up</p></a> 
