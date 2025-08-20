@@ -1,45 +1,53 @@
 const express = require('express');
+const { UserModel , TodoModel} = require("../db/db");
 const jwt = require('jsonwebtoken')
 const {auth, SECRET_KEY} = require("../middleware/user")
 
 const router = express.Router();
 
-let users =[];
-
 
 
 // signup router
-router.post('/signup', (req,res)=>{
-      const username = req.body.username;
-      const password = req.body.password;
+router.post('/signup' , async (req,res)=>{
 
-      users.push({
-            username : username,
-            password: password
+  try{
+      const email = req.body.email;
+      const password = req.body.password;
+      const name = req.body.name;
+
+      await UserModel.create({
+        email : email,
+        password: password,
+        name: name
       })
 
-   res.json({
+      res.json({
       message: "you are signed up"
    })
-   
+    } catch(e){
+      res.status(403).json({
+        message: "failed"
+      })
+    }
 })
 
 
 
 
 // signIn router
-router.post('/signIn',(req,res)=>{
-      const username = req.body.username;
+router.post('/signIn' , async(req,res)=>{
+      const email = req.body.email;
       const password = req.body.password;
 
-    let foundUser = null;
-    for(let i =0; i<users.length; i++){
-      if(users[i].username === username && users[i].password === password){
-            foundUser = users[i]
-      }
-    }
+      const user = await UserModel.findOne({
+        email:email,
+        password: password
+
+      })
+
+    
     if(!foundUser){
-      res.status(401).json({
+      res.status(403).json({
         message: "Incorrect Credentials"
       })
            
@@ -47,18 +55,13 @@ router.post('/signIn',(req,res)=>{
       return
     }else{
         const token = jwt.sign({
-            username
+            id: user._id
         }, SECRET_KEY );
     
          res.json({
             token: token
          })
-
     }
-
-
-
-
 })
 
 module.exports = router;
