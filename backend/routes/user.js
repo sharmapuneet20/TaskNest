@@ -1,7 +1,10 @@
 const express = require('express');
 const { UserModel , TodoModel} = require("../db/db");
 const jwt = require('jsonwebtoken')
-const {auth, SECRET_KEY} = require("../middleware/user")
+const auth = require("../middleware/user")
+const SECRET_KEY = process.env.SECRET_KEY;
+
+const bcrypt = require("bcrypt");
 
 const router = express.Router();
 
@@ -14,6 +17,9 @@ router.post('/signup' , async (req,res)=>{
       const email = req.body.email;
       const password = req.body.password;
       const name = req.body.name;
+
+
+
 
       await UserModel.create({
         email : email,
@@ -46,7 +52,7 @@ router.post('/signIn' , async(req,res)=>{
       })
 
     
-    if(!foundUser){
+    if(!user){
       res.status(403).json({
         message: "Incorrect Credentials"
       })

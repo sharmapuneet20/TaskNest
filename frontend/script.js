@@ -22,7 +22,7 @@ async function signup() {
     const username = document.getElementById('signup-username').value;
     const password = document.getElementById('signup-password').value;
 
-    await axios.post("http://localhost:3000/user/signup",{
+    await axios.post("http://localhost:3000/api/user/signup",{
         username: username,
         password: password
     });
@@ -39,7 +39,7 @@ async function signup() {
     const username = document.getElementById('signin-username').value;
     const password = document.getElementById('signin-password').value;
 
-  const response =   await axios.post("http://localhost:3000/user/signIn",{
+  const response =   await axios.post("http://localhost:3000/api/user/signIn",{
         username: username,
         password: password
     });

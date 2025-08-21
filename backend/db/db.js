@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(process.env.MONGO_URL);
         console.log("Database connected");
     } catch (error) {
         console.error("Database connection failed:", error);
@@ -17,8 +17,8 @@ const connectToDatabase = async () => {
 
 // Schema define
 const User  = new Schema({
-    email: {type:String , email },
-    password: password,
+    email: {type:String , unique :  true },
+    password: {type: String,  required: true },
     name: String
 })
 
