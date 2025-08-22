@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { required } = require("zod/mini");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.ObjectId;
 
@@ -17,9 +18,9 @@ const connectToDatabase = async () => {
 
 // Schema define
 const User  = new Schema({
-    email: {type:String , unique :  true },
+    username: {type: String , required: true},
     password: {type: String,  required: true },
-    name: String
+    
 })
 
 const Todo = new Schema({
