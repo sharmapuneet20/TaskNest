@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/' , auth , async(req, res)=>{
     try{
         const userId = req.userId;
-        const todos = await TodoModel.find({creatorId: userId});
+        const todos = await TodoModel.find({userId: userId});
 
         res.status(200).json({
             message: "Todos fetched successfully",
@@ -40,7 +40,7 @@ router.post('/' , auth, async(req , res)=>{
        const todo =  await TodoModel.create({
             title,
             done,
-            creatorId: userId
+            userId: userId
          })
          res.status(201).json({message: "Todo created successfully",
             todo
@@ -51,6 +51,8 @@ router.post('/' , auth, async(req , res)=>{
             res.status(500).json({message: "Server error" , error: error.message})
          }
 })
+
+module.exports = router;
 
 
 

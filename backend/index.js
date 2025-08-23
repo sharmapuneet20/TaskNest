@@ -2,9 +2,8 @@ require('dotenv').config();
 const express = require("express")
 const jwt = require("jsonwebtoken")
 const cors = require('cors')
-// const todoRouter = require("./routes/todo");
+const todoRouter = require("./routes/todo");
 const userRouter = require("./routes/user");
-
 const { connectToDatabase } = require("./db/db");
 
 const app = express();
@@ -15,7 +14,7 @@ app.use(express.json());
 
 
 // routes
-// app.use("/todo",todoRouter);
+app.use("/todo",todoRouter);
 app.use("/api/user",userRouter);
 
 

@@ -16,8 +16,16 @@ document.getElementById('show-signup').addEventListener('click', (e) => {
 
 // functions
 
+function showLoader() {
+  document.getElementById("loader").style.display = "flex";
+}
+function hideLoader() {
+  document.getElementById("loader").style.display = "none";
+}
+
 // signup function
 async function signup() {
+    showLoader();
     try{
     const username = document.getElementById('signup-username').value;
     const password = document.getElementById('signup-password').value;
@@ -26,15 +34,30 @@ async function signup() {
         username: username,
         password: password
     });
+
+    
+
+    document.getElementById('signup-container').style.display = 'none';
+    document.getElementById('todo-container').style.display = 'block';
+
+
     alert("signed up successfully")
     
- } catch(error){
-    alert("signup failed")
+ } catch (error) {
+    if (error.response) {
+      alert("Signup failed: " + error.response.data.message);
+      console.error("Error details:", error.response.data);
+    } else {
+      alert("Signup failed: " + error.message);
+      console.error("Error:", error);
+    } }finally{
+    hideLoader();
  }
 }
 //  signin function
 
  async function signin() {
+    showLoader();
     try{
     const username = document.getElementById('signin-username').value;
     const password = document.getElementById('signin-password').value;
@@ -45,6 +68,11 @@ async function signup() {
     });
 
     localStorage.setItem("token",response.data.token);
+
+    document.getElementById('signin-container').style.display = 'none';
+    document.getElementById('todo-container').style.display = 'block';
+
+
     alert("signed In successfully");
     
  } catch(error){

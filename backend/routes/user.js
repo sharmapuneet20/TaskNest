@@ -1,7 +1,7 @@
 const express = require('express');
 const { UserModel , TodoModel} = require("../db/db");
 const jwt = require('jsonwebtoken')
-const auth = require("../middleware/user")
+require("dotenv").config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const bcrypt = require("bcrypt");
@@ -29,6 +29,13 @@ router.post('/signup' , async (req,res)=>{
 
 
   const {username , password } = parseData.data;
+     const existingUser = await UserModel.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({
+        message: "Username already taken"
+      });
+    }
+
 
   const Hashedpassword  = await bcrypt.hash(password , 4);
       
@@ -61,7 +68,7 @@ router.post('/signIn' , async(req,res)=>{
 
     
     if(!user){
-      res.status(403).json({
+     return res.status(403).json({
         message: "User not found"})
         }
         
@@ -71,7 +78,7 @@ const passwordmatch = await  bcrypt.compare(password , user.password);
   }else{
 
         const token = jwt.sign({
-            id: user._id
+            userId: user._id
         }, SECRET_KEY );
     
          res.json({
