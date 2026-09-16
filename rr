@@ -1,0 +1,140 @@
+LLM 101
+1. What Is a Large Language Model (Conceptual Layer)
+What “language modeling” actually means
+
+Next-token prediction intuition
+
+Why predicting the next token leads to reasoning-like behavior
+
+Emergence & scale laws (intuition, not research-heavy)
+
+Foundation models vs task-specific models
+
+Generative vs representation models
+
+This gives them the mental model.
+
+2. Transformer Architecture (System Layer)
+No heavy math. But real understanding.
+
+Why RNNs failed at scale
+
+Attention mechanism intuition
+
+Self-attention explained visually
+
+Multi-head attention purpose
+
+Encoder-only vs Decoder-only vs Encoder-Decoder
+
+Why decoder-only models dominate LLMs
+
+Context window & positional encoding
+
+KV cache intuition (important for engineering)
+
+This is critical. Without architecture literacy, they can’t reason about latency, cost, or scaling.
+
+3. Tokenization & Embeddings (Representation Layer)
+This is where most roadmaps are weak.
+
+What is tokenization (BPE, WordPiece intuition)
+
+Why tokenization matters for cost
+
+Tokens vs words
+
+Embeddings as vector representations
+
+Semantic similarity intuition
+
+Why embeddings power RAG
+
+Dimensionality intuition (not linear algebra heavy)
+
+4. Training Paradigm (Learning Layer)
+Keep it conceptual but rigorous.
+
+Pretraining objective
+
+Massive data + self-supervision
+
+Fine-tuning vs instruction tuning
+
+RLHF intuition
+
+Alignment vs capability
+
+Why models hallucinate (probabilistic generation)
+
+This is where students stop seeing the model as “magic.”
+
+5. Inference Mechanics (Runtime Layer)
+Very underrated in beginner courses.
+
+Temperature, top-k, top-p
+
+Deterministic vs stochastic decoding
+
+Beam search intuition
+
+Log probabilities
+
+Why sampling affects reliability
+
+Context length limits
+
+Token streaming
+
+This directly affects production behavior.
+
+6. Model Ecosystem & Types
+Students need landscape awareness.
+
+Proprietary vs open-weight models
+
+API-based vs self-hosted
+
+Small vs large models
+
+Quantization intuition
+
+MoE intuition (at high level)
+
+Multimodal models
+
+Reasoning models vs chat models
+
+7. Evaluation & Benchmarks
+Critical for AI engineers.
+
+What benchmarks actually measure
+
+MMLU, GSM8K, HumanEval (high level)
+
+Why benchmarks can mislead
+
+Latency vs accuracy trade-offs
+
+Cost per 1K tokens thinking
+
+This prevents blind model selection.
+
+8. Limitations & Failure Modes
+Very important for serious engineers.
+
+Hallucination types
+
+Context loss
+
+Prompt sensitivity
+
+Data contamination
+
+Overconfidence
+
+Distribution shift
+
+Security risks (prompt injection basics)
+
+This prepares them for real-world engineering.
